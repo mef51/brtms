@@ -12,7 +12,7 @@ $config = array();
 $config['instance'] = 'instance1';
 
 // Used when hashing the passwords, sessions, and invites
-$config['SALT'] = '3eb9441e25';
+$config['SALT'] = 'fakesaltoverwritethis';
 
 // The location of the root of the BRTMS installation relative
 // to the server's document root
