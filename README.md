@@ -13,11 +13,11 @@ An online tournament management system made for Ottawa`s Battle Royale LAN Party
 setup
 ======
 
-1. Install dependencies:
-* `sudo apt-get install php5`
-* `sudo apt-get install mysql-server`
+* Install dependencies:
+  * `sudo apt-get install php5`
+  * `sudo apt-get install mysql-server`
 
-2. Write a config file `config.inc.php` at the root of the repository
+* Write a config file `config.inc.php` at the root of the repository
 Example:
 
 ```php
@@ -35,5 +35,5 @@ $config['DBPASS'] = 'password';
 $config['DBNAME'] = 'dbname';
 ```
 
-3. `make`
+* `make`
 
