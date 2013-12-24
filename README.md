@@ -16,6 +16,7 @@ setup
 * Install dependencies:
   * `sudo apt-get install php5`
   * `sudo apt-get install mysql-server`
+  * `sudo apt-get install apache2`
 
 * Write a config file `config.inc.php` at the root of the repository
 Example:
@@ -35,5 +36,5 @@ $config['DBPASS'] = 'password';
 $config['DBNAME'] = 'dbname';
 ```
 
-* `make`
+* `make`: you might have to sudo this. This will copy `br7portal.conf` to apache's folders and then restart the service. I wonder if there's a better way to do this without needing sudo.
 
