@@ -1,3 +1,4 @@
 /data/
 /config.inc.php
 *.log
+temp.php
