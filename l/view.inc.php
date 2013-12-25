@@ -30,18 +30,18 @@ function mt($title, $value, $color = '', $title2 = '') {
  */
 function mpb($main_body, $subtitle = '') {
 	global $config, $_p;
-	
-	$title = 'Battle Royale VI - Players Portal';
+
+	$title = 'Battle Royale VII - Players Portal';
 	if ($subtitle != '') {
 		$title .= ' - ' . $subtitle;
 	}
-	
+
 	$str = file_get_contents(dirname(__FILE__) . '/../style/top-brief.inc');
 	$contents = str_replace('%%TITLE%%', $title, $str);
 	$contents .= $main_body;
 	$contents .= file_get_contents(dirname(__FILE__) . '/../style/bottom-brief.inc');
 	$contents = str_replace('${ROOT}', $config['ROOT'], $contents);
-	
+
 	echo $contents;
 	die;
 }
@@ -56,17 +56,17 @@ function mpb($main_body, $subtitle = '') {
  */
 function mp($main_body, $subtitle = '') {
 	global $config, $_p;
-	
-	$title = 'Battle Royale VI - Players Portal';
+
+	$title = 'Battle Royale VII - Players Portal';
 	if ($subtitle != '') {
 		$title .= ' - ' . $subtitle;
 	}
-	
+
 	$str = file_get_contents(dirname(__FILE__) . '/../style/top.inc');
 	$contents = str_replace('%%TITLE%%', $title, $str);
 	$contents .= $main_body;
 	$contents .= file_get_contents(dirname(__FILE__) . '/../style/bottom.inc');
-	
+
 	if ($_p) {
 		$user_html = sPrintF('<li><a href="${ROOT}/profile">%1$s</a></li>
 <li><a href="${ROOT}/logout">Logout</a></li>',
@@ -77,7 +77,7 @@ function mp($main_body, $subtitle = '') {
 	}
 	$contents = str_replace('${CURR_USER}', $user_html, $contents);
 	$contents = str_replace('${ROOT}', $config['ROOT'], $contents);
-	
+
 	echo $contents;
 	die;
 }
