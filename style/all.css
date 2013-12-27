@@ -28,7 +28,7 @@
 }
 
 #page-menus {
-	background-color : #c9172a;
+	background-color: #2e3338;
 	border-bottom : 1px solid silver;
 	color : #ccc;
 	text-align : center;
@@ -40,7 +40,7 @@
 }
 
 #page-menus ul.user {
-	background-color : #89000a;
+	background-color : #530C17;
 	float : right;
 }
 
@@ -59,13 +59,13 @@
 }
 
 #page-menus ul li:hover a {
-	background-color : #acbed2;
-	color : red;
+	background-color : #B4B4B4;
+	color : #292929;
 }
 
 #page-menus ul li.sel a {
-	background-color : #acbed2;
-	color : red;
+	background-color : #B4B4B4;
+	color : #292929;
 }
 
 
@@ -471,25 +471,25 @@ table.tac th {
 	width : 10px;
 }
 /*
-.tour .c34 { 
+.tour .c34 {
 	border : solid black;
 	border-width : 0 1px 0 1px;
 }
 */
-.tour .c42 { 
+.tour .c42 {
 	border : solid black;
 	border-width : 0 1px 0 1px;
 	padding : 10px 10px 0 50px;
 }
 /*
-.tour .c44 { 
+.tour .c44 {
 	border : solid black;
 	border-radius : 0 0 4px 4px;
 	border-width : 0 1px 1px 1px;
 }
 */
 
-.tour .c52 { 
+.tour .c52 {
 	border : solid black;
 	border-width : 0 1px 1px 1px;
 	border-radius : 0 0 8px 8px;
@@ -529,7 +529,7 @@ table.tac th {
 .tour .joined a {
 	display : block;
 	font-size : 15px;
-	
+
 }
 
 .tour .joined p {
