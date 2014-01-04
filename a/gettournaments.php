@@ -27,7 +27,7 @@ if ($tour != '') {
 }
 
 // Get the brief details of the tournaments
-$res = $db->query($sql = 'SELECT `tid`, `shortcode`, `name`, `major`, `published`, `game`, `desc`, `prizes`, `teamsize`,
+$res = $db->query($sql = 'SELECT `tid`, `shortcode`, `name`, `tourney_type`, `published`, `game`, `desc`, `prizes`, `teamsize`,
   (SELECT `dname` FROM `players` `p` WHERE `p`.`pid`=`t`.`owner_pid`) AS `organizer`,
   (SELECT COUNT(*) FROM `tournament_players` `tp` WHERE `tp`.`tid`=`t`.`tid`) AS `players`,
   (SELECT COUNT(DISTINCT `gid`) FROM `tournament_players` `tp` WHERE `tp`.`tid`=`t`.`tid`) AS `teams`,
@@ -35,7 +35,7 @@ $res = $db->query($sql = 'SELECT `tid`, `shortcode`, `name`, `major`, `published
   (SELECT COUNT(*) FROM `tournament_players` `tp` WHERE `tp`.`tid`=`t`.`tid` AND `tp`.`pid`=' . s($_p['pid']) . ') AS `joined`
   FROM `tournaments` `t`
   WHERE ' . $cond1 . $cond2 . '
-  ORDER BY `major` DESC, `players` DESC');
+  ORDER BY `tourney_type` DESC, `players` DESC');
 if (!$res) {
 	error($sql);
 }
@@ -49,9 +49,9 @@ $ret['tournaments'] = $tournaments;
 
 // If there is a current player logged in, ...
 if (isSession()) {
-	
+
 	// Get the list of their registered tournaments
-	$res = $db->query($sql = 'SELECT `tid`, `major`, `gid`
+	$res = $db->query($sql = 'SELECT `tid`, `tourney_type`, `gid`
 	  FROM `tournament_players` `tp`
 	  INNER JOIN `tournaments` `t` USING (`tid`)
 	  WHERE `pid`=' . s($_p['pid']));

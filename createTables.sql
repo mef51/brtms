@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `tournaments` (
   `owner_pid` int(10) unsigned DEFAULT NULL,
   `shortcode` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `major` tinyint(3) unsigned NOT NULL,
+  `tourney_type` tinyint(3) unsigned NOT NULL, -- 0: crowdsourced, 1: minor, 2: major
   `published` tinyint(4) NOT NULL,
   `teamsize` tinyint(3) unsigned NOT NULL,
   `game` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `tournaments` (
   `createts` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`tid`),
   KEY `owner_pid` (`owner_pid`),
-  KEY `major` (`major`)
+  KEY `tourney_type` (`tourney_type`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=53 ;
 
 -- --------------------------------------------------------

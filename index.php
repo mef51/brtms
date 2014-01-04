@@ -21,7 +21,7 @@ These are tournaments that the Battle Royale Organizing Committee will run.
 These tournaments will have strict schedules, specific rule sets, and large prizes.
 Your participation in these tournaments is limited by your ticket type: you can join up to the
 number of tournaments you have purchased. However, if you want to upgrade your ticket type,
-you can do so at either of the IEEE offices at uOttawa or Carleton, and also at the event itself.
+you can do so at either of the IEEE student branches at uOttawa or Carleton, and also at the event itself.
 </p>
 
 <h2>Minor Tournaments</h2>
@@ -49,4 +49,3 @@ To manage registrations to the tournaments, use the interface on the
 <a href="${ROOT}/tournaments">Tournaments page</a> to make your selections.
 </p>'
 , 'Home Dashboard');
-

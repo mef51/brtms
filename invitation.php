@@ -23,7 +23,7 @@ if ($tok) {
 if (!isSet($p)) {
 	mp('<h1>Invalid Token</h1>
 <p>The link you are using is invalid, either because it is wrong or it has been used before.
-  Please contact <a href="mailto:jeffrey&#64;battleroyale.ca">Jeffrey</a> for assitance.</p>');
+  Please contact <a href="mailto:mohammed&#64;battleroyale.ca">Mohammed</a> for assitance.</p>');
 }
 
 // Logout any user that may already be logged in
