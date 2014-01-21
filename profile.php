@@ -14,10 +14,13 @@ requireSession();
 $res = $db->query($sql = sPrintF('SELECT
   (SELECT COUNT(`tid`) FROM `tournaments` `t`
     INNER JOIN `tournament_players` `tp` USING (`tid`)
-    WHERE `major`=1 AND `pid`=%1$s) AS `tours_major`,
+    WHERE `tourney_type`=2 AND `pid`=%1$s) AS `tours_major`,
   (SELECT COUNT(`tid`) FROM `tournaments` `t`
     INNER JOIN `tournament_players` `tp` USING (`tid`)
-    WHERE `major`=0 AND `pid`=%1$s) AS `tours_crowd`
+    WHERE `tourney_type`=1 AND `pid`=%1$s) AS `tours_minor`,
+  (SELECT COUNT(`tid`) FROM `tournaments` `t`
+    INNER JOIN `tournament_players` `tp` USING (`tid`)
+    WHERE `tourney_type`=0 AND `pid`=%1$s) AS `tours_crowd`
   FROM DUAL', $_p['pid']));
 $sp = $res->fetch_assoc();
 
@@ -72,12 +75,12 @@ $src .= sPrintF('
 <table cellspacing="10" style="margin:-10px;" width="100%%">
 <col width="180" /><col />
 <tr><td colspan="2" style="text-align:center;">%1$s<br /> <small><em>Upgrade Ticket?  Contact <a href="mailto:sales&#64;battleroyale.ca">Sales</a> for assistance.</em></small></td></tr>
-<tr><td>Joined Tournaments</td><td>%2$s Major<br /> %3$s Ad-Hoc</td></tr>
-<tr><td>Seat:</td><td><a href="${ROOT}/seats">%4$s</a> %5$s</td></tr>
-<tr><td>IP Address:</td><td>%6$s</td></tr>
+<tr><td>Joined Tournaments</td><td>%2$s Major<br />%3$s Minor<br />%4$s Crowdsourced</td></tr>
+<tr><td>Seat:</td><td><a href="${ROOT}/seats">%5$s</a> %6$s</td></tr>
+<tr><td>IP Address:</td><td>%7$s</td></tr>
 </table>
 </fieldset>
-', $_p['ticket'], $sp['tours_major'], $sp['tours_crowd'], $_p['seat'] ? $_p['seat'] : 'Not Selected', $seat_release, $_p['ip']);
+', $_p['ticket'], $sp['tours_major'], $sp['tours_minor'], $sp['tours_crowd'], $_p['seat'] ? $_p['seat'] : 'Not Selected', $seat_release, $_p['ip']);
 
 $src .= '</div>';
 
