@@ -32,13 +32,16 @@ $res = $db->query('SELECT
   (SELECT COUNT(*) FROM `tournament_players`
     INNER JOIN `tournaments` USING (`tid`)
     INNER JOIN `players` USING (`pid`)
-    WHERE `major`=1 AND `early`!=2) AS `joined_major`,
+    WHERE `tourney_type`=2 AND `early`!=2) AS `joined_major`,
   (SELECT SUM(`credits`) FROM `players`
     WHERE `early`!=2) AS `credits_major`,
   (SELECT COUNT(*) FROM `tournament_players`
     INNER JOIN `tournaments` USING (`tid`)
-    WHERE `major`=0) AS `joined_crowd`,
-  (SELECT COUNT(*) FROM `tournaments` WHERE `major`=0) AS `tours_crowd`,
+    WHERE `tourney_type`=1) AS `joined_minor`,
+  (SELECT COUNT(*) FROM `tournament_players`
+    INNER JOIN `tournaments` USING (`tid`)
+    WHERE `tourney_type`=0) AS `joined_crowd`,
+  (SELECT COUNT(*) FROM `tournaments` WHERE `tourney_type`=0) AS `tours_crowd`,
   (SELECT COUNT(*) FROM `tournaments` WHERE `published`=0) AS `tours_unpublished`,
   (SELECT COUNT(DISTINCT `gid`) FROM `tournament_players`) AS `total_teams`,
   (SELECT COUNT(`gid`) FROM `tournament_players`) AS `total_team_members`,
@@ -64,6 +67,7 @@ $src .= mt('Tickets', $stats['tickets_1cred'] . '/' . $stats['tickets_3cred']
   . '/' . $stats['tickets_10cred'], 'yellow', 'of 1/2-3/4+');
 $src .= mt('Prize Budget', $prize_budget1 . '$', 'orange', 'up to ' . $prize_budget2 . '$');
 $src .= mt('Joined Majors', $stats['joined_major'], 'blue', 'out of ' . $stats['credits_major']);
+$src .= mt('Joined Minors', $stats['joined_minor'], 'blue');
 $src .= mt('Prize per Join', sPrintF('%.2f$', $prize_budget1 / $stats['joined_major'], 2), 'blue',
   sPrintF('up to %.2f$', $prize_budget2 / $stats['joined_major'], 2));
 $src .= '</div>';
@@ -78,10 +82,10 @@ $src .= '</div>';
 $res = $db->query('SELECT `pid`, `fname`, `lname`, `seat`, `credits`, `firstlogints`, `lastlogints`,
   (SELECT COUNT(`tid`) FROM `tournaments` `t`
     INNER JOIN `tournament_players` `tp` USING (`tid`)
-    WHERE `major`=1 AND `tp`.`pid`=`p`.`pid`) AS `tours_major`,
+    WHERE `tourney_type`=2 AND `tp`.`pid`=`p`.`pid`) AS `tours_major`,
   (SELECT COUNT(`tid`) FROM `tournaments` `t`
     INNER JOIN `tournament_players` `tp` USING (`tid`)
-    WHERE `major`=0 AND `tp`.`pid`=`p`.`pid`) AS `tours_crowd`,
+    WHERE `tourney_type`=0 AND `tp`.`pid`=`p`.`pid`) AS `tours_crowd`,
   (SELECT COUNT(`gid`) FROM `tournament_players` `tp`
     WHERE `tp`.`pid`=`p`.`pid`) AS `teams`
   FROM `players` `p`
