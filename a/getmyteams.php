@@ -10,7 +10,7 @@ require_once dirname(__FILE__) . '/../l/session.inc.php';
 requireSession('json');
 
 // Get the list of teams
-$res = $db->query($sql = 'SELECT `tp`.`tid` AS `tp_tid`, `t`.`major` AS `t_major`, `g`.*
+$res = $db->query($sql = 'SELECT `tp`.`tid` AS `tp_tid`, `t`.`tourney_type` AS `t_major`, `g`.*
   FROM `tournament_players` `tp`
   INNER JOIN `tournaments` `t` USING (`tid`)
   LEFT JOIN `groups` `g` USING (`gid`)
