@@ -21,7 +21,7 @@ $src = '
 ';
 
 if ($_p['pid']) {
-	
+
 	// Display a 'create a new tournament' link, the code for its form, and the 'create team' form
 	$src .= sPrintF('
 

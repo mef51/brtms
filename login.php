@@ -15,16 +15,16 @@ require_once dirname(__FILE__) . '/l/view.inc.php';
  */
 function outputPage($msg = '') {
 	global $db;
-	
+
 	$msg_src = !$msg ? '' : sPrintF('<tr><td class="error tac" colspan="2">%s</td></tr>', $msg);
-	
+
 	$r = @$_GET['r'];
 	if (!$r) {
 		$r = $_SERVER['HTTP_REFERER'];
 	}
-	
+
 	$user = @$_GET['user'];
-	
+
 	$src = sPrintF('
 <form action="login" method="post">
 <input type="hidden" name="r" value="%1$s" />
@@ -41,20 +41,20 @@ function outputPage($msg = '') {
 </fieldset>
 </form>
 ', $r, $msg_src, htmlEntities($user));
-	
+
 	mp($src, 'Login');
 }
 
 // Check if the request is a POST which would be a form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	
+
 	// Get the URL of the original page requested
 	$r = @$_POST['r'];
-	
+
 	// Get the user's information
 	$username = $_POST['user'];
 	$password = encodePassword($_POST['pass']);
-	
+	echo $username;
 	// Check if we can find the user (and they've accepted the invitation)
 	$res = $db->query($sql = 'SELECT `pid`, `password` FROM `players`
 	  WHERE `firstlogints` IS NOT NULL AND `username`=' . s($username));
@@ -62,21 +62,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		error($res);
 	}
 	$p = $res->fetch_assoc();
-	
+
 	// Either didn't find the user, or their password is wrong
 	if (!$p || $p['password'] != $password) {
-		
+
 		outputPage('Invalid username or password.');
-		
+
 	} else {
-		
+
 		// Found the user
 		$pid = $p['pid'];
 	}
-	
+
 	// Generate a session token for the user
 	$token = subStr(sha1($config['SALT'] . '-session-' . strFTime('%Y-%m-%d %H:%M:%S')), 15, 20);
-	
+
 	// Save the token to the database
 	// Note: This mechanism only allows one active session per user.
 	// TODO: Change the mechanism to allow multiple user sessions.
@@ -85,20 +85,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	  WHERE `pid`=' . s($pid))) {
 		error($sql);
 	}
-	
+
 	// Set the current user
 	setCurrUser($token);
-	
+
 	// If the form didn't specify a valid redirect URL, redirect to the home page
 	if (!$r || preg_match('#/(login|invitation)$#', parse_url($r, PHP_URL_PATH))) {
 		$r = $config['ROOT'] . '/';
 	}
-	
+
 	// Redirect to the specified URL
 	header('Location: ' . $r);
-	
+
 } else {
-	
+
 	// Not a form submission, output the login page/form
 	outputPage();
 }
