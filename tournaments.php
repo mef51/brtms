@@ -45,6 +45,26 @@ if ($_p['pid']) {
 	<option>16</option><option>17</option><option>18</option><option>19</option><option>20</option>
 	<option>21</option><option>22</option><option>23</option><option>24</option><option>25</option>
 	</select></td></tr>
+	', $_p['dname']);
+
+	// Write an option field for the admin to set the tournament type
+	if ($_p['pid'] == 1) {
+		$src .= sPrintF('
+	<tr>
+		<td>Tournament Type:</td>
+		<td>
+			<select name="tourney_type">
+				<option value="0">Crowdsourced</option>
+				<option value="1">Minor</option>
+				<option value="2">Major</option>
+			</select>
+		</td>
+	</tr>
+		', $_p['dname']);
+	}
+
+	$src .= sPrintF('
+
 <tr><td>Notes:</td><td><textarea name="notes" cols="50" rows="2"></textarea></td></tr>
 <tr><td colspan="2"><strong>Note:</strong> For the moment, you cannot directly edit your tournament, so please double-check your inputs.  Edit feature is coming soon!</td></tr>
 <tr><td></td><td><input name="subbtn" type="submit" value="Create Tournament" /></td></tr>

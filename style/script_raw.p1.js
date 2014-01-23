@@ -505,6 +505,15 @@ function createTournament(frm) {
 	}
 	frm.subbtn.disabled = true;
 
+	// Figure out the tournament type. Default to crowdsourced.
+	var tourney_type;
+	if(frm.tourney_type){
+		tourney_type = frm.tourney_type.value;
+	}
+	else {
+		tourney_type = 0;
+	}
+
 	// Submit the form data through an AJAX request
 	$.ajax({
 	  url: '${ROOT}/a/createtournament',
@@ -515,6 +524,7 @@ function createTournament(frm) {
 	  	desc: frm.desc.value,
 	  	prizes: frm.prizes.value,
 	  	teamsize: frm.teamsize.value,
+		tourney_type: tourney_type,
 	  	notes: frm.notes.value
 	  },
 	  dataType: 'json'
