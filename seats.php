@@ -10,54 +10,54 @@ require_once dirname(__FILE__) . '/l/view.inc.php';
 
 // Specify the seats that are special
 $res_seats = array(
-  'A14' => ' Unavailable',
-  'B14' => ' Unavailable',
-  'C14' => ' Unavailable',
-  'D22' => 'Network Admin',
-  'D24' => 'Network Admin',
-  'E21' => 'Players Portal Admin',
-  'E23' => 'Players Portal Admin',
-  'F13' => ' Unavailable',
-  'G13' => ' Unavailable',
-  'H13' => ' Unavailable',
-  'J13' => ' Unavailable',
-  'K1' => ' Unavailable',
-  'K2' => ' Unavailable',
-  'K3' => ' Unavailable',
-  'K4' => ' Unavailable',
-  'K5' => ' Unavailable',
-  'K6' => ' Unavailable',
-  'K7' => ' Unavailable',
-  'K8' => ' Unavailable',
-  'K9' => ' Unavailable',
-  'K10' => ' Unavailable',
-  'K11' => ' Unavailable',
-  'K12' => ' Unavailable',
-  'K13' => ' Unavailable',
-  'K14' => ' Unavailable',
-  'K15' => ' Unavailable',
-  'K16' => ' Unavailable',
-  'K17' => ' Unavailable',
-  'K18' => ' Unavailable',
-  'K19' => ' Unavailable',
-  'K20' => ' Unavailable',
-  'K21' => ' Unavailable',
-  'K22' => ' Unavailable',
-  'K23' => ' Unavailable',
-  'K24' => ' Unavailable',
-  'L13' => ' Unavailable',
+    'A14' => ' Unavailable',
+    'B14' => ' Unavailable',
+    'C14' => ' Unavailable',
+    'D22' => 'Network Admin',
+    'D24' => 'Network Admin',
+    'E21' => 'Players Portal Admin',
+    'E23' => 'Players Portal Admin',
+    'F13' => ' Unavailable',
+    'G13' => ' Unavailable',
+    'H13' => ' Unavailable',
+    'J13' => ' Unavailable',
+    'K1' => ' Unavailable',
+    'K2' => ' Unavailable',
+    'K3' => ' Unavailable',
+    'K4' => ' Unavailable',
+    'K5' => ' Unavailable',
+    'K6' => ' Unavailable',
+    'K7' => ' Unavailable',
+    'K8' => ' Unavailable',
+    'K9' => ' Unavailable',
+    'K10' => ' Unavailable',
+    'K11' => ' Unavailable',
+    'K12' => ' Unavailable',
+    'K13' => ' Unavailable',
+    'K14' => ' Unavailable',
+    'K15' => ' Unavailable',
+    'K16' => ' Unavailable',
+    'K17' => ' Unavailable',
+    'K18' => ' Unavailable',
+    'K19' => ' Unavailable',
+    'K20' => ' Unavailable',
+    'K21' => ' Unavailable',
+    'K22' => ' Unavailable',
+    'K23' => ' Unavailable',
+    'K24' => ' Unavailable',
+    'L13' => ' Unavailable',
 );
 
 $res = $db->query($sql = 'SELECT `seat`, `dname` FROM `players` WHERE `seat` IS NOT NULL');
 if (!$res) {
-	error($sql);
+    error($sql);
 }
 
 // Generate the array of occupied seats
 while ($p = $res->fetch_assoc()) {
-	if (!isSet($res_seats[$p['seat']])) {
-		$res_seats[$p['seat']] = $p['dname'];
-	}
+    if (!isSet($res_seats[$p['seat']])) {
+        $res_seats[$p['seat']] = $p['dname'];
+    }
 }
 
 $src = '';
@@ -65,11 +65,11 @@ $src = '';
 // Display instructions and legend
 // Note: The display is different if the user is not logged in.
 if (isSet($_p)) {
-	$seat_str = '';
-	if ($_p['seat']) {
-		$seat_str = sPrintF(', seat %1$s', $_p['seat']);
-	}
-	$src .= sPrintF('
+    $seat_str = '';
+    if ($_p['seat']) {
+        $seat_str = sPrintF(', seat %1$s', $_p['seat']);
+    }
+    $src .= sPrintF('
 <fieldset class="faded-bg" style="float:right;margin-left:1em;width:380px;">
 <legend>Seat Legend</legend>
 <table class="center seating-chart">
@@ -90,9 +90,9 @@ if (isSet($_p)) {
 
 <form action="#" onsubmit="return chooseSeat(this);">
 ', $seat_str);
-	
+
 } else {
-	$src .= '
+    $src .= '
 <fieldset class="faded-bg" style="float:right;margin-left:1em;width:380px;">
 <legend>Seat Legend</legend>
 <table class="center seating-chart">
@@ -116,11 +116,11 @@ if (isSet($_p)) {
 $src .= genSeatChart($res_seats);
 
 if (isSet($_p)) {
-	$src .= '
+    $src .= '
 </form>
 
 <script type="text/javascript">
-	$(".seating-chart.real").find("input").click(function() {chooseSeat(this.form);});
+    $(".seating-chart.real").find("input").click(function() {chooseSeat(this.form);});
 </script>
 ';
 }
