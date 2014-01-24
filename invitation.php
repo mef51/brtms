@@ -54,7 +54,7 @@ $src = sPrintF('
 <p><strong>Note:</strong> Please double-check your email address because it is difficult to change it later.
   If you have any difficulties, please contact <a href="mailto:accounts&#64;battleroyale.ca">Accounts</a> for assistance.</p>
 <p>Thanks,<br />
-  Battle Royale VI Organizers</p>
+  Battle Royale VII Organizers</p>
 </fieldset>
 
 <form action="#" onsubmit="return createAccount(this);">
