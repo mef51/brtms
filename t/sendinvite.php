@@ -40,15 +40,15 @@ $remaining_days = ceil($remaining / 3600 / 24);
 // -----------------------------------------------------------------------------
 $message = sPrintF('Hello %1$s %2$s!
 
-Thank you for purchasing a ticket for Battle Royale VI, happening
-November 3-4, 2012.  That is in just %4$s days!
+Thank you for purchasing a ticket for Battle Royale VII, happening
+February 22-23, 2014.  That is in just %4$s days!
 
-We would like to take this opportunity to invite you to beta test the
-new Battle Royale Players Portal.  It is through this portal that you
+We would like to take this opportunity to invite you to join the
+Battle Royale Players Portal.  It is through this portal that you
 will be able to join tournaments, create new tournaments, and select
 your seat.
 
-Please use the personalized link below to accept your invitation.
+Please use the personalized link below to accept your invitation and create your account.
 http://players.battleroyale.ca/invitation?t=%3$s
 
 If you have any problems, please email us at accounts@battleroyale.ca
@@ -63,16 +63,16 @@ Battle Royale Organizing Committee
 
 // If the form was submitted, ...
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	
+
 	// Send the email and check for errors
 	$result = @mail($to, $subject, str_replace('<br />', "\n", $message), $headers);
-	
+
 	if ($result) {
-		
+
 		// Email was successful, update the DB and show a message
 		header('Content-Type: text/plain');
 		echo 'Email invitation successfully sent!';
-		
+
 		$res = $db->query($sql = sPrintF('UPDATE `players`
 		  SET `invitedts`=NOW()
 		  WHERE `pid`=' . s($pid)));
@@ -80,17 +80,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			error($sql);
 		}
 		echo '  Database successfully updated!';
-		
+
 	} else {
-		
+
 		// There was an error, usually because running on the dev server
 		// that doesn't have mail() setup properly
 		header('Content-Type: text/plain');
 		echo 'Oh noes!  There were errors!';
 	}
-	
+
 } else {
-	
+
 	// Display the form
 	$src = sPrintF('
 <div class="center">
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </form>
 </div>
 ', htmlEntities($to), $subject, htmlEntities($headers), $message, $p['invitedts']);
-	
+
 	mp($src, 'Send Sign-Up Invatation');
 }
 
