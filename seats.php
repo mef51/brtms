@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Display a static seatign chart.
+ * Display a static seating chart.
  */
 
 require_once dirname(__FILE__) . '/l/seating.inc.php';
