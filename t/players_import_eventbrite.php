@@ -17,35 +17,35 @@ function parse_line($line) {
 
 // If the form is submitted, ...
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	
+
 	// Get the JSON feed
 	$json = file_get_contents($config['eventbrite_attendee_list']);
-	
+
 	$data = json_decode($json, true);
-	
+
 	// Check if each player was already imported
 	$stmt = $db->stmt_init();
 	$stmt->prepare($sql = 'SELECT COUNT(*) AS `c` FROM `players`
 	  WHERE `orderno`=? AND `attendeeno`=?');
-	
+
 	$orderno = 0;
 	$attendeeno = 0;
 	$c_players = 0;
-	
+
 	$stmt->bind_param('ss', $orderno, $attendeeno);
 	$stmt->bind_result($c_players);
-	
+
 	$to_add = array();
 	$c_skips = 0;
 	foreach ($data['attendees'] as $attendee) {
 		$att = $attendee['attendee'];
-		
+
 		$orderno = $att['order_id'];
 		$attendeeno = $att['id'];
-		
+
 		$stmt->execute();
 		$stmt->fetch();
-		
+
 		// If so, skip
 		if ($c_players != '0') {
 			$c_skips++;
@@ -53,44 +53,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$to_add[] = $att;
 		}
 	}
-	
+
 	$stmt->close();
-	
+
 	$d = '';
 	$c_inserts = 0;
 	foreach ($to_add as $att) {
-		
+
+		// Ticket ID's
+		Minor Tournaments Ticket: '20988825'
+		1 Major Tournament Ticket: '20988827'
+		2 Major Tournaments Ticket: '20988829'
+		Console-Only 1 Major Tournament Ticket: '22647163'
+		Console-Only 2 Major Tournaments Ticket: '22647165'
+
 		// Determine their credits and early-bird status
 		$ticket_id = $att['ticket_id'];
 		$ticket = '';
 		$credits = 0;
 		$early = 0;
-		if ($ticket_id == '14910684') {
-			$ticket = 'Early Bird Ticket - 1 Major Tournament';
-			$credits = 1;
-			$early = 1;
-		} else if ($ticket_id == '14910686') {
-			$ticket = 'Early Bird Ticket - 2-3 Major Tournaments';
-			$credits = 3;
-			$early = 1;
-		} else if ($ticket_id == '14910690') {
-			$ticket = 'Early Bird Ticket - 4+ Major Tournaments';
-			$credits = 10;
-			$early = 1;
-		} else if ($ticket_id == '14910694') {
-			$ticket = 'Regular Ticket - 1 Major Tournament';
+		if ($ticket_id == '20988825') {
+			$ticket = 'Minor Tournaments Ticket';
+			$credits = 0;
+			$early = 0;
+		} else if ($ticket_id == '20988827') {
+			$ticket = '1 Major Tournament Ticket';
 			$credits = 1;
 			$early = 0;
-		} else if ($ticket_id == '14910698') {
-			$ticket = 'Regular Ticket - 2-3 Major Tournaments';
-			$credits = 3;
+		} else if ($ticket_id == '20988829') {
+			$ticket = '2 Major Tournaments Ticket';
+			$credits = 2;
 			$early = 0;
-		} else if ($ticket_id == '14910700') {
-			$ticket = 'Regular Ticket - 4+ Major Tournaments';
-			$credits = 10;
+		} else if ($ticket_id == '22647163') {
+			$ticket = 'Console-Only 1 Major Tournament Ticket';
+			$credits = 1;
+			$early = 0;
+		} else if ($ticket_id == '22647165') {
+			$ticket = 'Console-Only 2 Major Tournaments Ticket';
+			$credits = 2;
 			$early = 0;
 		}
-		
+
 		// Determine all their fields
 		$fields = array();
 		$fields['token']	= subStr(sha1($config['SALT'] . '-invite-' . $att['id']), 10, 20);
@@ -106,27 +109,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$fields['orderno']	= $att['order_id'];
 		$fields['mobile']	= 'N/I';
 		$fields['gender']	= 'N/I';
-		
+
 		$sqlp = array();
 		foreach ($fields as $key => $value) {
 			$sqlp[] = sPrintF('`%s`=%s', $key, s($value));
 		}
-		
+
 		// Add the player to the DB
 		if (!$db->query($sql = 'INSERT INTO `players` SET ' . implode(', ', $sqlp))) {
 			error($sql);
 		}
 		$c_inserts++;
 	}
-	
+
 	// Display the results page
 	$src = sPrintF('<h1>Import Players: Results</h1>
 <p>Successfully imported %s players, skipped %2$s existing players.</p><pre>%3$s</pre>', $c_inserts, $c_skips, $d);
-	
+
 	mp($src);
-	
+
 } else {
-	
+
 	// Display the form
 	$src = '<h1>Import Players from Eventbrite</h1>
 
@@ -134,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <p><input type="submit" value="Import from Eventbrite" /></p>
 </form>
 ';
-	
+
 	mp($src, 'Import Players from Eventbrite');
 }
 
