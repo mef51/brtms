@@ -15,10 +15,10 @@ require_once dirname(__FILE__) . '/session.inc.php';
  */
 function genSeatCell($seat, $res_seats = array()) {
 	global $_p;
-	
+
 	if (isSet($res_seats[$seat])) {
 		if ($res_seats[$seat] == ' Unavailable') {
-			return '<th></th>';
+			return sPrintF('<th id="seat-%1$s"></th>', $seat);
 		}
 		return sPrintF('<th class="%3$s" title="Seat %1$s - %2$s" id="seat-%1$s">'
 		  . '<input type="checkbox" /></th>',
@@ -37,6 +37,15 @@ function genSeatCell($seat, $res_seats = array()) {
 	}
 }
 
+function genSeatRow($letter, $even, $res_seats) {
+	$output = '<tr><td><table cellspacing="0" class="p1"><tr>';
+	for ($j = 0; $j < 12; $j++) {
+		$output .= genSeatCell($letter . (($even ? 24 : 23) - 2 * $j), $res_seats);
+	}
+	$output .= '</tr></table></td><tr>';
+	return $output;
+}
+
 /**
  * Generate the seating chart.
  * Note: The chart will be displayed differently if the user is not logged in.
@@ -44,66 +53,30 @@ function genSeatCell($seat, $res_seats = array()) {
  * @return The HTML code of the generated chart.
  */
 function genSeatChart($res_seats = array()) {
-	
+
 	$output = '<table cellspacing="0" class="seating-chart real">
-<tr style="height:98px;"><td>&nbsp;</td></tr>
+<tr style="height:151px;"><td>&nbsp;</td></tr>
 <tr>
-<td>
+<td style="width:130px;">&nbsp;</td>
+';
 
-<table cellspacing="0" class="p1">
-';
-	
-	for ($j = 0; $j < 12; $j++) {
-		$output .= '<tr><td class="lm"></td>';
-		
-		for ($i = 0; $i < 8; $i++) {
-			$output .= genSeatCell(chr(65 + $i) . (2 * $j + 1), $res_seats)
-			  . '<td class="tt">&nbsp;</td>';
-			$output .= genSeatCell(chr(65 + $i) . (2 * $j + 2), $res_seats)
-			  . '<td class="bt">&nbsp;</td>';
+	for ($k = 0; $k < 2; $k++) {
+		$output .= '<td><table cellspacing="0" class="p1">';
+		for ($i = 0; $i < 4; $i++) {
+			$output .= genSeatRow(chr(68 - $i + $k * 4), 0, $res_seats);
+			$output .= '<tr style="height:22px;"><td>&nbsp;</td></tr>';
+			$output .= genSeatRow(chr(68 - $i + $k * 4), 1, $res_seats);
+			$output .= '<tr style="height:21px;"><td>&nbsp;</td></tr>';
 		}
-		
-		$output .= '<td class="rm"></td></tr>
-';
+		$output .= '</table></td><td style="width:103px;">&nbsp;</td>';
 	}
-	
-	$output .= '</table>
 
-</td>
+	$output .= '<td style="width:35px;">&nbsp;</td>
 </tr>
-<tr style="height:44px;"><td>&nbsp;</td></tr>
-<tr>
-<td>
-
-<table cellspacing="0" class="p2">
-';
-	
-	for ($i = 0; $i < 3; $i++) {
-		$output .= '<tr class="ho"><td class="lm2"></td>';
-	
-		for ($j = 0; $j < 12; $j++) {
-			$output .= genSeatCell(chr(74 + $i) . (23 - 2 * $j), $res_seats);
-		}
-		
-		$output .= '<td class="rm2"></td></tr><tr style="height:26px;"><td>&nbsp;</td></tr>
-<tr class="ho"><td class="lm2"></td>';
-		
-		for ($j = 0; $j < 12; $j++) {
-			$output .= genSeatCell(chr(74 + $i) . (24 - 2 * $j), $res_seats);
-		}
-		
-		$output .= '<td class="rm2"></td></tr><tr style="height:28px;"><td>&nbsp;</td></tr>
-';
-	}
-	
-	$output .= '</table>
-
-</td>
-</tr>
-<tr style="height:107px;"><td>&nbsp;</td></tr>
+<tr style="height:81px;"><td>&nbsp;</td></tr>
 </table>
 ';
-	
+
 	return $output;
 }
 
