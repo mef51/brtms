@@ -61,11 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	foreach ($to_add as $att) {
 
 		// Ticket ID's
-		Minor Tournaments Ticket: '20988825'
-		1 Major Tournament Ticket: '20988827'
-		2 Major Tournaments Ticket: '20988829'
-		Console-Only 1 Major Tournament Ticket: '22647163'
-		Console-Only 2 Major Tournaments Ticket: '22647165'
+		// Minor Tournaments Ticket: '20988825'
+		// 1 Major Tournament Ticket: '20988827'
+		// 2 Major Tournaments Ticket: '20988829'
+		// Console-Only 1 Major Tournament Ticket: '22647163'
+		// Console-Only 2 Major Tournaments Ticket: '22647165'
 
 		// Determine their credits and early-bird status
 		$ticket_id = $att['ticket_id'];
