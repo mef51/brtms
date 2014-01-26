@@ -137,7 +137,7 @@ INSERT INTO `tournaments` (`tid`, `owner_pid`, `shortcode`, `name`, `tourney_typ
 (7, 1, 'sf4', 'Street Fighter IV:AE 1v1', 2, 1, 1, 'Street Fighter IV:AE', NULL, 'Coming Soon.', '<h5>1st Place</h5>\n<ul>\n<li>$50.00 Cash</li>\n</ul>\n<h5>2nd Place</h5>\n<ul>\n<li>$20.00 Gift Card to Best Buy</li>\n</ul>', '', '2014-01-26 20:27:13'),
 (8, 1, 'injustice', 'Injustice 1v1', 2, 1, 1, 'Injustice', NULL, 'Coming Soon.', '<h5>1st Place</h5>\n<ul>\n<li>$50.00 Cash</li>\n</ul>\n<h5>2nd Place</h5>\n<ul>\n<li>$20.00 Gift Card to Best Buy</li>\n</ul>', '', '2014-01-26 20:27:50'),
 (9, 1, 'mariokart', 'Mario Kart Wii 1v1', 2, 1, 1, 'Mario Kart Wii', NULL, 'Coming Soon.', '<h5>1st Place</h5>\n<ul>\n<li>$50.00 Cash</li>\n</ul>\n<h5>2nd Place</h5>\n<ul>\n<li>$20.00 Gift Card to Best Buy</li>\n</ul>', '', '2014-01-26 20:28:45');
-c
+
 -- --------------------------------------------------------
 
 --
