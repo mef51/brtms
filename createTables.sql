@@ -125,6 +125,19 @@ CREATE TABLE IF NOT EXISTS `tournaments` (
   KEY `tourney_type` (`tourney_type`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=53 ;
 
+
+-- Populate `tournaments` table with the major and minor tournaments
+INSERT INTO `tournaments` (`tid`, `owner_pid`, `shortcode`, `name`, `tourney_type`, `published`, `teamsize`, `game`, `reqs`, `desc`, `prizes`, `notes`, `createts`) VALUES
+(1, 1, 'lol', 'AMD''s League Of Legends 5v5', 2, 1, 5, 'Leauge Of Legends', NULL, 'It''ll be dope.', 'CASH MUNEY', '', '2014-01-04 18:57:14'),
+(2, 1, 'csgo', 'Counter-Strike Global Offensive 5v5', 2, 1, 5, 'CS:GO', NULL, 'Coming Soon.', '<h5>1st Place Team</h5>\r\n<ul>\r\n<li>$200.00 Cash</li>\r\n</ul>\r\n<h5>2nd Place Team</h5>\r\n<ul>\r\n<li>5x $30.00 Gift Cards to Best Buy</li>\r\n</ul>', '', '2014-01-26 20:07:40'),
+(3, 1, 'dota2', 'Dota2 5v5', 2, 1, 5, 'Dota2', NULL, 'Coming Soon.', '<h5>1st Place Team</h5>\n<ul>\n<li>$200.00 Cash</li>\n</ul>\n<h5>2nd Place Team</h5>\n<ul>\n<li>5x $20.00 Gift Cards to Best Buy</li>\n</ul>', '', '2014-01-26 20:16:42'),
+(4, 1, 'sc2', 'Starcraft 2 1v1', 2, 1, 1, 'Starcraft 2', NULL, 'Coming Soon.', '<h5>1st Place</h5>\r\n<ul>\r\n<li>$75.00 Cash</li>\r\n</ul>\r\n<h5>2nd Place</h5>\r\n<ul>\r\n<li>$40.00 Gift Card to Best Buy</li>\r\n</ul>', '', '2014-01-26 20:19:47'),
+(5, 1, 'ss', 'Super Smash Brothers Brawl 1v1', 2, 1, 1, 'Super Smash Brothers Brawl', NULL, 'Coming Soon.', '<h5>1st Place</h5>\n<ul>\n<li>$50.00 Cash</li>\n</ul>\n<h5>2nd Place</h5>\n<ul>\n<li>$20.00 Gift Card to Best Buy</li>\n</ul>', '', '2014-01-26 20:21:55'),
+(6, 1, 'fifa', 'FIFA 2013 1v1', 2, 1, 1, 'FIFA 2013', NULL, 'Coming Soon.', '<h5>1st Place</h5>\n<ul>\n<li>$50.00 Cash</li>\n</ul>\n<h5>2nd Place</h5>\n<ul>\n<li>$20.00 Gift Card to Best Buy</li>\n</ul>', '', '2014-01-26 20:22:55'),
+(7, 1, 'sf4', 'Street Fighter IV:AE 1v1', 2, 1, 1, 'Street Fighter IV:AE', NULL, 'Coming Soon.', '<h5>1st Place</h5>\n<ul>\n<li>$50.00 Cash</li>\n</ul>\n<h5>2nd Place</h5>\n<ul>\n<li>$20.00 Gift Card to Best Buy</li>\n</ul>', '', '2014-01-26 20:27:13'),
+(8, 1, 'injustice', 'Injustice 1v1', 2, 1, 1, 'Injustice', NULL, 'Coming Soon.', '<h5>1st Place</h5>\n<ul>\n<li>$50.00 Cash</li>\n</ul>\n<h5>2nd Place</h5>\n<ul>\n<li>$20.00 Gift Card to Best Buy</li>\n</ul>', '', '2014-01-26 20:27:50'),
+(9, 1, 'mariokart', 'Mario Kart Wii 1v1', 2, 1, 1, 'Mario Kart Wii', NULL, 'Coming Soon.', '<h5>1st Place</h5>\n<ul>\n<li>$50.00 Cash</li>\n</ul>\n<h5>2nd Place</h5>\n<ul>\n<li>$20.00 Gift Card to Best Buy</li>\n</ul>', '', '2014-01-26 20:28:45');
+c
 -- --------------------------------------------------------
 
 --
