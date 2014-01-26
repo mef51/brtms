@@ -136,7 +136,16 @@ INSERT INTO `tournaments` (`tid`, `owner_pid`, `shortcode`, `name`, `tourney_typ
 (6, 1, 'fifa', 'FIFA 2013 1v1', 2, 1, 1, 'FIFA 2013', NULL, 'Coming Soon.', '<h5>1st Place</h5>\n<ul>\n<li>$50.00 Cash</li>\n</ul>\n<h5>2nd Place</h5>\n<ul>\n<li>$20.00 Gift Card to Best Buy</li>\n</ul>', '', '2014-01-26 20:22:55'),
 (7, 1, 'sf4', 'Street Fighter IV:AE 1v1', 2, 1, 1, 'Street Fighter IV:AE', NULL, 'Coming Soon.', '<h5>1st Place</h5>\n<ul>\n<li>$50.00 Cash</li>\n</ul>\n<h5>2nd Place</h5>\n<ul>\n<li>$20.00 Gift Card to Best Buy</li>\n</ul>', '', '2014-01-26 20:27:13'),
 (8, 1, 'injustice', 'Injustice 1v1', 2, 1, 1, 'Injustice', NULL, 'Coming Soon.', '<h5>1st Place</h5>\n<ul>\n<li>$50.00 Cash</li>\n</ul>\n<h5>2nd Place</h5>\n<ul>\n<li>$20.00 Gift Card to Best Buy</li>\n</ul>', '', '2014-01-26 20:27:50'),
-(9, 1, 'mariokart', 'Mario Kart Wii 1v1', 2, 1, 1, 'Mario Kart Wii', NULL, 'Coming Soon.', '<h5>1st Place</h5>\n<ul>\n<li>$50.00 Cash</li>\n</ul>\n<h5>2nd Place</h5>\n<ul>\n<li>$20.00 Gift Card to Best Buy</li>\n</ul>', '', '2014-01-26 20:28:45');
+(9, 1, 'mariokart', 'Mario Kart Wii 1v1', 2, 1, 1, 'Mario Kart Wii', NULL, 'Coming Soon.', '<h5>1st Place</h5>\n<ul>\n<li>$50.00 Cash</li>\n</ul>\n<h5>2nd Place</h5>\n<ul>\n<li>$20.00 Gift Card to Best Buy</li>\n</ul>', '', '2014-01-26 20:28:45'),
+(10, 1, NULL, 'League Of Legends 1v1 Face-Off ', 1, 1, 1, 'League Of Legends', NULL, 'Coming Soon.', 'Bragging rights.', '', '2014-01-26 20:47:28'),
+(11, 1, NULL, 'Starcraft 2 2v2', 1, 1, 2, 'Starcraft 2', NULL, 'Coming Soon.', 'Bragging rights.', '', '2014-01-26 20:47:53'),
+(12, 1, NULL, 'Team Fortress 2 Brawl', 1, 1, 1, 'Team Fortress 2', NULL, 'Coming Soon.', 'Bragging rights.', '', '2014-01-26 20:48:26'),
+(13, 1, NULL, 'Minecraft Open Server', 1, 1, 1, 'Minecraft', NULL, 'Coming Soon.', 'Bragging rights.', '', '2014-01-26 20:49:18'),
+(14, 1, NULL, 'Call of Duty (one of them)', 1, 1, 1, 'Call of Duty', NULL, 'Coming Soon.', 'Bragging rights.', '', '2014-01-26 20:49:51'),
+(15, 1, NULL, 'Super Smash Brothers Melee 1v1', 1, 1, 1, 'Super Smash Brothers Melee', NULL, 'Coming Soon.', 'Bragging rights.', '', '2014-01-26 20:50:19'),
+(16, 1, NULL, 'Mario Kart - Open', 1, 1, 1, 'Mario Kart', NULL, 'Pick up and Play Mario Kart', 'Bragging rights.', '', '2014-01-26 20:50:48'),
+(17, 1, NULL, 'Magic: The Gathering 1v1', 1, 1, 1, 'Magic: The Gathering', NULL, 'Coming Soon.', 'Bragging rights.', '', '2014-01-26 20:51:19'),
+(18, 1, NULL, 'Settlers of Catan', 1, 1, 1, 'Settlers of Catan', NULL, 'Coming Soon.', 'Bragging rights.', '', '2014-01-26 20:51:39');
 
 -- --------------------------------------------------------
 

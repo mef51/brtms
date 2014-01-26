@@ -31,12 +31,22 @@ function genTournament(t, detailed) {
 			return 'Major Tournament';
 	}
 
+	function getTourneyThumbLabel(tournament){
+		var t = tournament;
+		if(t.tourney_type == 2)
+			return t.shortcode;
+		else if(t.tourney_type == 1)
+			return 'minor';
+		else if(t.tourney_type == 0)
+			return 'default';
+	}
+
 	// Generate the URL
 	var href = '${ROOT}/tournaments#tournament/' + (t.shortcode || t.tid);
 	// Generate the source for each of the four cells
 	var src1 = '<table cellpadding="0" cellspacing="0"><tr><td>'
 	  + '<img class="thumb" src="${ROOT}/imgs/game-'
-          + (t.tourney_type == '2' && t.shortcode || 'default')
+          + ( getTourneyThumbLabel(t) )
           + '.png" /></td><td><h2>'
           + (!detailed ? '<a href="' + href + '">' : '') + t.name + (!detailed ? '</a>' : '')
           + '</h2><p class="l1">'
