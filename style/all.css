@@ -649,41 +649,39 @@ table.tac th {
 
 .seating-chart .p1 th {
 	border : 0;
-	height : 22px;
-	padding : 0 0 !important;
-	width : 22px;
-}
-
-.seating-chart .p2 th {
-	border : 0;
 	height : 23px;
 	padding : 0 0 !important;
 	width : 22px;
-
 }
 
-.seating-chart .bt {
-	width : 21px;
+#seat-A2,
+#seat-D1 {
+	width : 10px;
 }
 
-.seating-chart .lm {
-	width : 131px;
+#seat-A10,
+#seat-D9 {
+	width : 29px;
 }
 
-.seating-chart .lm2 {
-	width : 574px;
-}
-
-.seating-chart .rm {
-/*	width : 28px;*/
-}
-
-.seating-chart .rm2 {
-/*	width : 35px;*/
-}
-
-.seating-chart .tt {
+#seat-A18,
+#seat-D17 {
 	width : 27px;
+}
+
+#seat-E8,
+#seat-H7 {
+	width : 28px;
+}
+
+#seat-E16,
+#seat-H15 {
+	width : 29px;
+}
+
+#seat-E24,
+#seat-H23 {
+	width : 10px;
 }
 
 .dis {
