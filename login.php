@@ -54,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// Get the user's information
 	$username = $_POST['user'];
 	$password = encodePassword($_POST['pass']);
-	echo $username;
 	// Check if we can find the user (and they've accepted the invitation)
 	$res = $db->query($sql = 'SELECT `pid`, `password` FROM `players`
 	  WHERE `firstlogints` IS NOT NULL AND `username`=' . s($username));
