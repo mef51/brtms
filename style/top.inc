@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>%%TITLE%%</title>
-    <link href="${ROOT}/style/icon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="${ROOT}/style/icon.ico?v=2" rel="shortcut icon" type="image/x-icon" />
     <link href="${ROOT}/style/all.css" media="all" rel="stylesheet" type="text/css" />
     <link href="${ROOT}/style/screen.css" media="screen" rel="stylesheet" type="text/css" />
     <link href="${ROOT}/style/print.css" media="print" rel="stylesheet" type="text/css" />

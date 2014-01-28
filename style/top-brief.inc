@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>%%TITLE%%</title>
-<link href="${ROOT}/style/icon.ico" rel="shortcut icon" type="image/x-icon" />
+<link href="${ROOT}/style/icon.ico?v=2" rel="shortcut icon" type="image/x-icon" />
 <link href="${ROOT}/style/disqus.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 <body>
