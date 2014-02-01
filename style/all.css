@@ -4,9 +4,10 @@
 }
 
 #page-bottom {
-	background-image : url(bg_bottom.png);
+	/*background-image : url(bg_bottom.png);*/
 	background-repeat : no-repeat;
-	height : 243px;
+	height : 40px;
+	background-color: black;
 	background-size: 100% 100%;
 }
 
