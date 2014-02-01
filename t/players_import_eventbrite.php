@@ -66,6 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		// 2 Major Tournaments Ticket: '20988829'
 		// Console-Only 1 Major Tournament Ticket: '22647163'
 		// Console-Only 2 Major Tournaments Ticket: '22647165'
+		// Volunteer Ticket: '23175637'
 
 		// Determine their credits and early-bird status
 		$ticket_id = $att['ticket_id'];
@@ -90,6 +91,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$early = 0;
 		} else if ($ticket_id == '22647165') {
 			$ticket = 'Console-Only 2 Major Tournaments Ticket';
+			$credits = 2;
+			$early = 0;
+		} else if ($ticket_id == '23175637') {
+			$ticket = 'Volunteer Ticket';
 			$credits = 2;
 			$early = 0;
 		}
