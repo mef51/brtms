@@ -249,8 +249,9 @@ function getTournamentDetails(t) {
 				src += genTeam(data.teams[i], t.joined, data.inteam);
 			}
 			if (!data.inteam && t.joined == '1') {
+				// escape t.name cuz the name might have quotes in it.
 				src += '<dt><a href="#" onclick="return showCreateTeam(' + t.tid
-				  + ',\'' + t.name + '\');">Create a New Team</a></dt>';
+				  + ',\'' + escape(t.name) + '\');">Create a New Team</a></dt>';
 			}
 			src += '</dl>';
 			src += '<h2>Free Agents</h2>';
@@ -572,7 +573,7 @@ function showCreateTeam(tid, tname) {
 	});
 	var frm = $('#createTeamForm form').get(0);
 	frm.tid.value = tid;
-	frm.tournament.value = tname;
+	frm.tournament.value = unescape(tname); // unescape t.name so that it doesn't look ugly
 	frm.subbtn.disabled = false;
 	frm.tname.focus();
 	return false;
