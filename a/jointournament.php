@@ -26,10 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$row = $res->fetch_assoc();
 
 	// Check the number of major tournaments the user is registered in
-	if ($row['tourney_type'] == '1') {
+	if ($row['tourney_type'] == '2') {
 		$res = $db->query($sql = sPrintF('SELECT COUNT(*) AS `c` FROM `tournament_players`
 		  INNER JOIN `tournaments` USING (`tid`)
-		  WHERE `tourney_type`=1 AND `pid`=%1$s', s($_p['pid'])));
+		  WHERE `tourney_type`=2 AND `pid`=%1$s', s($_p['pid'])));
 		if (!$res) {
 			error($sql);
 		}
