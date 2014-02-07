@@ -18,13 +18,13 @@ function fd($ts) {
 	if ($delta < 90) {
 		return sPrintF('%ds ago', $delta);
 	} else if ($delta < 90 * 60) {
-		return sPrintF('%.1fmin ago', $delta / 60);
+		return sPrintF('%dmin ago', $delta / 60);
 	} else if ($delta < 36 * 60 * 60) {
-		return sPrintF('%.1fh ago', $delta / 60 / 60);
+		return sPrintF('%dh ago', $delta / 60 / 60);
 	} else if ($delta < 45 * 24 * 60 * 60) {
-		return sPrintF('%.1fd ago', $delta / 60 / 60 / 24);
+		return sPrintF('%dd ago', $delta / 60 / 60 / 24);
 	} else {
-		return sPrintF('%.1f mo ago', $delta / 60 / 60 / 24 / 30);
+		return sPrintF('%d mo ago', $delta / 60 / 60 / 24 / 30);
 	}
 }
 
