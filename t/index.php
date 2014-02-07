@@ -11,7 +11,21 @@ require_once dirname(__FILE__) . '/../l/view.inc.php';
 requireAdminSession();
 
 function fd($ts) {
-	return !$ts ? '' : (subStr($ts, 8, 2) . strToLower(subStr(strFTime('%b', strToTime($ts)), 0, 1)) . subStr($ts, 11));
+	if (!$ts) {
+		return '';
+	}
+	$delta = time() - strToTime($ts);
+	if ($delta < 90) {
+		return sPrintF('%ds ago', $delta);
+	} else if ($delta < 90 * 60) {
+		return sPrintF('%.1fmin ago', $delta / 60);
+	} else if ($delta < 36 * 60 * 60) {
+		return sPrintF('%.1fh ago', $delta / 60 / 60);
+	} else if ($delta < 45 * 24 * 60 * 60) {
+		return sPrintF('%.1fd ago', $delta / 60 / 60 / 24);
+	} else {
+		return sPrintF('%.1f mo ago', $delta / 60 / 60 / 24 / 30);
+	}
 }
 
 $src = '<h1>Admin Dashboard</h1>';
