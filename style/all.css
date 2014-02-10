@@ -600,44 +600,54 @@ table.tac th {
 	padding : 0;
 }
 
+.seating-chart input {
+	margin : 0px;
+}
+
 .seating-chart td,
 .seating-chart th {
 	margin : 0 !important;
 	padding : 0 !important;
 }
 
+.seating-chart th {
+	height : 19px;
+	width : 19px;
+}
+
 .seating-chart .me {
 	background-color : #88f !important;
 	background-image : none !important;
 	cursor : help;
-	outline : 1px solid blue;
+	border : 1px solid blue;
 }
 
 .seating-chart .occ {
 	background-color : #f88 !important;
 	background-image : none !important;
 	cursor : help;
-	outline : 1px solid red;
+	border : 1px solid red;
 }
 
 .seating-chart .rvd {
 	background-color : silver !important;
 	background-image : none !important;
 	cursor : help;
-	outline : 1px solid gray;
+	border : 1px solid gray;
 }
 
 .seating-chart .vac {
 	background-image : none !important;
 	text-align : center;
 	vertical-align : middle;
+	border : 1px solid #fff4d0;
 }
 
 .seating-chart .vac2 {
 	background-color : #8d8 !important;
 	background-image : none !important;
 	cursor : help;
-	outline : 1px solid #080;
+	border : 1px solid #080;
 }
 
 .seating-chart .me input,
@@ -645,44 +655,6 @@ table.tac th {
 .seating-chart .rvd input,
 .seating-chart .vac2 input {
 	visibility : hidden;
-
-}
-
-.seating-chart .p1 th {
-	border : 0;
-	height : 23px;
-	padding : 0 0 !important;
-	width : 22px;
-}
-
-#seat-A2,
-#seat-D1 {
-	width : 10px;
-}
-
-#seat-A10,
-#seat-D9 {
-	width : 29px;
-}
-
-#seat-A18,
-#seat-D17 {
-	width : 27px;
-}
-
-#seat-E8,
-#seat-H7 {
-	width : 28px;
-}
-
-#seat-E16,
-#seat-H15 {
-	width : 29px;
-}
-
-#seat-E24,
-#seat-H23 {
-	width : 10px;
 }
 
 .dis {
