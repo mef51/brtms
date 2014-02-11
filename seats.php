@@ -56,7 +56,7 @@ if (isSet($_p) && $_p['seataccess'] == 1) {
 ', $seat_str);
 	
 } else {
-	$src .= '
+	$src .= sPrintF('
 <fieldset class="faded-bg" style="float:right;margin-left:1em;width:380px;">
 <legend>Seat Legend</legend>
 <table class="center seating-chart">
@@ -70,9 +70,9 @@ if (isSet($_p) && $_p['seataccess'] == 1) {
 </fieldset>
 
 <h1>Seating Plan</h1>
-<p>You must login in order to choose your seat.</p>
+<p>%s</p>
 <p>You may hover over any seat with your cursor to see its status.</p>
-';
+', isSet($_p) ? 'Seats are picked in order of registration but it is not currently your turn.' : 'You must login in order to choose your seat.');
 }
 
 // Generate the chart

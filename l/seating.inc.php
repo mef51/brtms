@@ -33,7 +33,7 @@ function genSeatCell($seat, $res_seats = array()) {
 		return sPrintF('<th class="%2$s" title="Seat %1$s - Vacant" id="seat-%1$s">'
 		  . '<input type="radio" name="seat" value="%1$s" /></th>',
 			$seat,
-			isSet($_p) ? 'vac' : 'vac2');
+			isSet($_p) && $_p['seataccess'] == 1 ? 'vac' : 'vac2');
 	}
 }
 
