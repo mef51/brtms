@@ -95,7 +95,7 @@ function requireSession($type = 'html') {
  */
 function requireAdminSession($type = 'html') {
 	global $config, $_p;
-	if (!isSession() || $_p['pid'] != 1) {
+	if (!isSession() || $_p['access'] != 'admin') {
 		if ($type == 'json') {
 			header('Content-Type: application/json');
 			die('{"result":"error","errorType":"autha"}');

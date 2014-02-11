@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
   PRIMARY KEY (`gid`),
   KEY `tid` (`tid`),
   KEY `leader_pid` (`leader_pid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=127 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `matches` (
   KEY `tid` (`tid`),
   KEY `gid1` (`gid1`),
   KEY `gid2` (`gid2`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -74,6 +74,7 @@ CREATE TABLE IF NOT EXISTS `players` (
   `username` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password` char(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `access` enum('regular','admin') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'regular',
   `ip` char(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `seat` char(3) COLLATE utf8_unicode_ci DEFAULT NULL,
   `seatts` timestamp NULL DEFAULT NULL,
@@ -99,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `players` (
   KEY `attendeeno` (`attendeeno`),
   KEY `early` (`early`),
   KEY `credits` (`credits`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=462 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -124,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `tournaments` (
   PRIMARY KEY (`tid`),
   KEY `owner_pid` (`owner_pid`),
   KEY `tourney_type` (`tourney_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=53 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 -- Populate `tournaments` table with the major and minor tournaments
