@@ -34,6 +34,7 @@ $res = $db->query('SELECT
   (SELECT COUNT(*) FROM `players`) AS `total`,
   (SELECT COUNT(*) FROM `players` WHERE `firstlogints` IS NOT NULL) AS `signups`,
   (SELECT COUNT(*) FROM `players` WHERE `seat` IS NOT NULL) AS `seated`,
+  (SELECT COUNT(*) FROM `players` WHERE `seataccess`=1) AS `seataccess`,
   (SELECT COUNT(*) FROM `players` WHERE `invitedts` IS NULL) AS `notinvited`,
   (SELECT COUNT(*) FROM `players` WHERE `invitedts` > DATE_SUB(NOW(), INTERVAL 1 HOUR)) AS `lasthour`,
 
@@ -72,7 +73,7 @@ $prize_budget2 = $stats['tickets_1cred'] * 10 + $stats['tickets_3cred'] * 15 + $
 $src .= '<div class="center">';
 $src .= mt('Total Players', $stats['total'], 'yellow');
 $src .= mt('Signed Up', $stats['signups'], 'green', sPrintF('equiv to %d%%', $stats['signups'] / $stats['total'] * 100));
-$src .= mt('Seated', $stats['seated'], 'green', sPrintF('equiv to %d%%', $stats['seated'] / $stats['signups'] * 100));
+$src .= mt('Seated', $stats['seated'], 'green', sPrintF('equiv to %d%%', $stats['seated'] / $stats['seataccess'] * 100));
 $src .= mt('Not Invited', $stats['notinvited'], 'red');
 $src .= mt('Invites Sent', $stats['lasthour'], 'orange', 'Last Hour');
 $src .= '</div>';
