@@ -51,6 +51,7 @@ if (isSet($_p) && $_p['seataccess'] == 1) {
 <h1>Seating Plan</h1>
 <p>Choose your desired seat on the map below.  Your seat number will be used to determine which network port and power outlet you should use to setup your computer.</p>
 <p>You may hover over any seat with your cursor to see its detailed status.</p>
+<p><strong>Note: If you are not part of a team, we would appreciate if you hold-off on selecting your seat for a few days to allow teams to choose seats next to each other.</strong></p>
 
 <form action="#" onsubmit="return chooseSeat(this);">
 ', $seat_str);
