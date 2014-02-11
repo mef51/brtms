@@ -28,7 +28,7 @@ $src = '';
 
 // Display instructions and legend
 // Note: The display is different if the user is not logged in.
-if (isSet($_p)) {
+if (isSet($_p) && $_p['seataccess'] == 1) {
 	$seat_str = '';
 	if ($_p['seat']) {
 		$seat_str = sPrintF(', seat %1$s', $_p['seat']);
