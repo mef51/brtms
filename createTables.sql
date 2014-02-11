@@ -77,6 +77,7 @@ CREATE TABLE IF NOT EXISTS `players` (
   `ip` char(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `seat` char(3) COLLATE utf8_unicode_ci DEFAULT NULL,
   `seatts` timestamp NULL DEFAULT NULL,
+  `seataccess` tinyint(3) unsigned DEFAULT 0,
   `registeredts` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `invitedts` timestamp NULL DEFAULT NULL,
   `firstlogints` timestamp NULL DEFAULT NULL,
