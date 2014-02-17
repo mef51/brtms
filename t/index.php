@@ -64,15 +64,15 @@ Last purchase made %1$.1f hours ago.
 ', $diff / 3600);
 
 
-$res = $db->query('SELECT `pid`, `fname`, `lname`, `credits`, `email`, `registeredts`, `invitedts`, `firstlogints`, `lastlogints`
+$res = $db->query('SELECT `pid`, `fname`, `lname`, `credits`, `email`, `seataccess`, `registeredts`, `invitedts`, `firstlogints`, `lastlogints`
   FROM `players` `p`
   WHERE `firstlogints` IS NULL
   ORDER BY `credits`, `pid`');
 
 // Display the list of users that have yet to login to the system
-$src .= '<table cellspacing="0" class="border center">
+$src .= '<table cellspacing="0" class="border center tac">
 ';
-$ths = '<tr><th>#</th><th>Name</th><th>Credits</th><th>Email</th><th>Registered</th><th>Invited</th><th>First Login</th></tr>';
+$ths = '<tr><th>#</th><th>Name</th><th>Credits</th><th>Email</th><th>Registered</th><th>Invited</th><th>First Login</th><th>Seat</th></tr>';
 
 $i = 0;
 while ($p = $res->fetch_assoc()) {
@@ -87,8 +87,18 @@ while ($p = $res->fetch_assoc()) {
 	if (!$inv_src2 && strToTime($p['invitedts']) < strToTime('-3 days')) {
 		$inv_src2 = sPrintF('<a href="sendinvite?pid=%1$s">Send Again</a>', $p['pid']);
 	}
-	$src .= sPrintF('<tr><td>%s</td><td>%s %s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>
-', $p['pid'], $p['fname'], $p['lname'], $p['credits'], $p['email'], fd($p['registeredts']), $inv_src, $inv_src2);
+	$seat_str = $p['seataccess'] == '1' ? 'Yes' : 'No';
+	$src .= sPrintF('<tr>
+	  <td>%s</td>
+	  <td class="l">%s %s</td>
+	  <td>%s</td>
+	  <td class="l">%s</td>
+	  <td>%s</td>
+	  <td>%s</td>
+	  <td>%s</td>
+	  <td><a href="change_seataccess?pid=%1$s" title="Change Seat Access Permission">%s</a></td>
+</tr>
+', $p['pid'], $p['fname'], $p['lname'], $p['credits'], $p['email'], fd($p['registeredts']), $inv_src, $inv_src2, $seat_str);
 }
 
 $src .= '</table>';

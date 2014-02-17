@@ -262,11 +262,19 @@ table.tac th {
 	text-align : center;
 }
 
+.l {
+	text-align : left !important;
+}
+
 .left {
 	display : table;
 	float : left;
 	margin-bottom : 15px;
 	margin-right : 25px;
+}
+
+.r {
+	text-align : right !important;
 }
 
 .right {
