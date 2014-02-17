@@ -2,4 +2,5 @@ Options +MultiViews
 RewriteEngine On
 
 RewriteRule ^tournament/(.+)$ single_tournament?tourid=$1 [L]
+RewriteRule ^(/?).git/ - [F,L]
 
