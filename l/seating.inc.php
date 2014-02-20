@@ -37,12 +37,12 @@ function genSeatCell($seat, $res_seats = array()) {
 	}
 }
 
-function genSeatCol($letter, $even, $res_seats) {
-	$output = '<td><table cellspacing="2" class="p1">';
-	for ($j = 0; $j < 10; $j++) {
-		$output .= '<tr>' . genSeatCell($letter . (($even ? 20 : 19) - 2 * $j), $res_seats) . '</tr>';
+function genSeatCol($letter, $even, $res_seats, $count = 11) {
+	$output = '<table cellspacing="2" class="p1">';
+	for ($j = 0; $j < $count; $j++) {
+		$output .= '<tr>' . genSeatCell($letter . (($even ? 20 : 19) - 2 * $j + ($j == 10 ? 99 : 0)), $res_seats) . '</tr>';
 	}
-	$output .= '</table></td>';
+	$output .= '</table>';
 	return $output;
 }
 
@@ -57,19 +57,24 @@ function genSeatChart($res_seats = array()) {
 	$output = '<table cellspacing="0" class="seating-chart real">
 <tr style="height:61px;"><td>&nbsp;</td></tr>
 <tr>
-<td style="width:167px;">&nbsp;</td>
+<td style="width:125px;">&nbsp;</td>
 ';
 
+	$output .= '<td><div style="padding-top:82px;">' . genSeatCol('H', 0, $res_seats, 8) . '</div></td>';
+	$output .= '<td style="width:17px;">&nbsp;</td>';
+
+
 	for ($i = 0; $i < 6; $i++) {
-		$output .= genSeatCol(chr(65 + $i), 0, $res_seats);
+		$output .= '<td>' . genSeatCol(chr(65 + $i), 0, $res_seats) . '</td>';
 		$output .= '<td style="width:28px;">&nbsp;</td>';
-		$output .= genSeatCol(chr(65 + $i), 1, $res_seats);
+		$output .= '<td>' . genSeatCol(chr(65 + $i), 1, $res_seats) . '</td>';
 		$output .= '<td style="width:17px;">&nbsp;</td>';
 	}
 
-	$output .= '<td style="width:163px;">&nbsp;</td>
+	$output .= '<td><div style="padding-top:105px;">' . genSeatCol('G', 0, $res_seats, 6) . '</div></td>';
+	$output .= '<td style="width:138px;">&nbsp;</td>
 </tr>
-<tr style="height:207px;"><td>&nbsp;</td></tr>
+<tr style="height:171px;"><td>&nbsp;</td></tr>
 </table>
 ';
 

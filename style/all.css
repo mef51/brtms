@@ -648,7 +648,7 @@ table.tac th {
 	background-image : none !important;
 	text-align : center;
 	vertical-align : middle;
-	border : 1px solid #fff4d0;
+	border : 1px dotted #fff4d0;
 }
 
 .seating-chart .vac2 {
