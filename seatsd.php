@@ -10,6 +10,8 @@ require_once dirname(__FILE__) . '/l/view.inc.php';
 
 // Specify the seats that are special
 $res_seats = array(
+  'D98' => ' Reserved',
+  'D99' => ' Reserved',
 );
 
 $src = '';
