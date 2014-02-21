@@ -12,6 +12,12 @@ require_once dirname(__FILE__) . '/l/view.inc.php';
 $res_seats = array(
   'D98' => ' Reserved',
   'D99' => ' Reserved',
+  'H5' => ' Reserved',
+  'H7' => ' Reserved',
+  'H13' => ' Reserved',
+  'H15' => ' Reserved',
+  'H17' => ' Reserved',
+  'H19' => ' Reserved',
 );
 
 $res = $db->query($sql = 'SELECT `seat`, `dname` FROM `players` WHERE `seat` IS NOT NULL');
