@@ -60,7 +60,7 @@ function genSeatChart($res_seats = array()) {
 <td style="width:125px;">&nbsp;</td>
 ';
 
-	$output .= '<td><div style="padding-top:183px;">' . genSeatCol('H', 0, $res_seats, 8) . '</div></td>';
+	$output .= '<td><div style="padding-top:83px;">' . genSeatCol('H', 0, $res_seats, 8) . '</div></td>';
 	$output .= '<td style="width:17px;">&nbsp;</td>';
 
 
