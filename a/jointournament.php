@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 
 	// Ensure they have not surpassed their credit limit
-	if ($count >= $_p['credits']) {
+	if ($count >= $_p['credits'] && $row['tourney_type'] == '2') {
 		$ret['result'] = 'error';
 		$ret['errorType'] = 'overlimit';
 
