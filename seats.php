@@ -12,6 +12,7 @@ require_once dirname(__FILE__) . '/l/view.inc.php';
 $res_seats = array(
   'D98' => ' Reserved',
   'D99' => ' Reserved',
+  'G19' => ' Reserved',
   'H5' => ' Reserved',
   'H7' => ' Reserved',
   'H13' => ' Reserved',
